@@ -1,3 +1,4 @@
+
 const PLAYERS = [
     "Spiderman",
     "Captain America",
@@ -26,6 +27,15 @@ const initPlayers = (players) => {
     let detailedPlayers = [];
     // Create players using for loop
     // Type your code here
+    for (i=1 ; i<players.length; i++){
+        detailedPlayers.push({
+            name:players[i],
+            strength:getRandomStrength(),
+            image:"images/super-"+(i+1)+".png",
+            type:i%2==0 ? "hero":"villain",
+        })
+    }
+
 
     return detailedPlayers;
 }
@@ -42,9 +52,17 @@ const buildPlayers = (players, type) => {
     // Loop through players and accumulate HTML template
     // depending of type of player(hero|villain)
     // Type your code here
-
+    for (i=1 ; i<100 ; i++){
+        if (players[i].type === type) {
+            fragment += `
+            <div class="player">
+                <img src="${players[i].image}" alt="">
+                 <div class="name">${players[i].name}</div>
+                <div class="strength">${players[i].strength}</div>
+            </div>`;
+    }
     return fragment;
-}
+}}
 // Display players in HTML
 const viewPlayers = (players) => {
 
